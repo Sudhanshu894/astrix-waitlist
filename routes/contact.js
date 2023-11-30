@@ -1,29 +1,54 @@
 const express = require('express');
 const router = express.Router();
 const Contact = require('../models/contact');
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+  host: 'smtp-mail.outlook.com',
+  port: 587,
+  secure: false, // TLS
+  auth: {
+    user: process.env.USER_MAIL,
+    pass: process.env.USER_PASS,
+  },
+  tls: {
+    ciphers: 'SSLv3',
+  },
+});
 
 // Create a contact
 router.post('/', async (req, res) => {
   try {
-    const { email, username, phoneNumber } = req.body;
+    const { name, email, message } = req.body;
 
-    // Validate email and username
-    // Add your validation logic here
-    if (email == undefined || username == undefined){
-        return res.status(300).send({success: false, message: "Missing parameters"});
+    if (name == undefined || email == undefined) {
+      return res
+        .status(400)
+        .send({ success: false, message: 'Missing parameters' });
     }
-    const existing = await Contact.findOne({email});
-    if (existing){
-        return res.status(400).send({success: false, message: "Contact with this info already exists"});
-    }
-
     const newContact = new Contact({
+      name,
       email,
-      username,
-      phoneNumber,
+      message,
     });
 
     await newContact.save();
+
+    const mailOptions = {
+      from: 'hello@astrix.live',
+      to: email,
+      subject: 'Welcome to Astrix',
+      text: `Hello ${name},\n\nThank you for contacting us! Your information has been successfully added.`,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
+
     res.status(201).json(newContact);
   } catch (error) {
     console.error(error);

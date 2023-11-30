@@ -7,12 +7,12 @@ const contactSchema = new mongoose.Schema({
     unique: true,
     trim: true,
   },
-  username: {
+  name: {
     type: String,
     required: true,
     trim: true,
   },
-  phoneNumber: {
+  message: {
     type: String,
     trim: true,
   },
