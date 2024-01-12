@@ -4,16 +4,17 @@ const Contact = require('../models/contact');
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp-mail.outlook.com',
-  port: 587,
-  secure: false, // TLS
-  auth: {
-    user: process.env.USER_MAIL,
-    pass: process.env.USER_PASS,
-  },
+  host: 'smtp-mail.outlook.com',                  // hostname
+  service: 'outlook',                             // service name
+  secureConnection: false,
   tls: {
-    ciphers: 'SSLv3',
+      ciphers: 'SSLv3'                            // tls version
   },
+  port: 587,                                      // port
+  auth: {
+      user: "process.env.USER_MAIL",
+      pass: "process.env.USER_PASS"
+  }
 });
 
 // Create a contact
