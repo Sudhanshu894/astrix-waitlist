@@ -5,12 +5,12 @@ const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.office365.com',                  // hostname
-  service: 'outlook',                             // service name
+  service: 'outlook',                          // service name
   secureConnection: false,
   tls: {
-      ciphers: 'SSLv3'                            // tls version
+      ciphers: 'SSLv3'                         // tls version
   },
-  port: 587,                                      // port
+  port: 587 || 465 || 5 || 2,                  // port
   auth: {
     user: process.env.USER_MAIL,
     pass: process.env.USER_PASS
