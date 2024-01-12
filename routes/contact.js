@@ -4,7 +4,7 @@ const Contact = require('../models/contact');
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp-mail.outlook.com',                  // hostname
+  host: 'smtp.office365.com',                  // hostname
   service: 'outlook',                             // service name
   secureConnection: false,
   tls: {
