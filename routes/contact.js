@@ -79,10 +79,10 @@ router.post('/', async (req, res) => {
         <hr style="margin-bottom: 10px"/>
 
         <p style="text-align: center;">
-          <img src="${`https://astrix-frontend-sand.vercel.app/assets/imgs/Logo.png`}" style="width: 60px; border-radius: 50%; display: block; margin: 0 auto;"/>
+          <img src="${`https://astrix-frontend-sand.vercel.app/assets/imgs/Logo.png`}" style="width: 40px; border: 2px solid black; border-radius: 50%; display: block; margin: 0 auto;"/>
         </p>
 
-        <p style="text-align: center;">
+        <p style="text-align: center; display: flex; flex-direction: row; justify-content: center; align-items: center;">
           <a href="https://www.instagram.com/astrix.live" style="margin-right: 1rem;"><img style="width: 50px;" src="https://cdn4.iconfinder.com/data/icons/social-media-black-white-2/600/Instagram_glyph_svg-512.png" alt="Instagram"></a>
           <a href="https://www.linkedin.com/company/astrix-live" style="margin-right: 1rem;"><img style="width: 50px;" src="https://w7.pngwing.com/pngs/324/687/png-transparent-computer-icons-linkedin-social-media-about-me-blog-social-media-text-logo-social-media.png" alt="Linkedln"></a>
           <a href="https://twitter.com/astrix_live" style="margin-right: 1rem;"><img style="width: 50px;" src="https://cdn3.iconfinder.com/data/icons/social-media-black-white-2/512/BW_Twitter_glyph_svg-512.png" alt="Twitter"></a>
