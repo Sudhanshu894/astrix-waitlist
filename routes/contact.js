@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
     await newContact.save();
 
     const mailOptions = {
-      from: 'hello@astrix.live',
+      from: 'Astrix',
       to: email,
       subject: 'Thank you for joining the Astrix Waitlist 🙌',
       html: `<!DOCTYPE html>
@@ -75,7 +75,7 @@ router.post('/', async (req, res) => {
       
         <p>Stay tuned for the future of event ticketing with Astrix!</p>
       
-        <p style={{font-weight: "bold"}}>- Astrix Team</p>
+        <p style={{font-weight: bold}}>- Astrix Team</p>
       
       </body>
       
