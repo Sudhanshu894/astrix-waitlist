@@ -1,4 +1,4 @@
-const express = require('express');
+'const express = require('express');
 const router = express.Router();
 const Contact = require('../models/contact');
 const nodemailer = require('nodemailer');
@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
     await newContact.save();
 
     const mailOptions = {
-      from: "Astrix" <hello@astrix.live>,
+      from: '"Astrix" <hello@astrix.live>',
       to: email,
       subject: 'Thank you for joining the Astrix Waitlist 🙌',
       html: `<!DOCTYPE html>
