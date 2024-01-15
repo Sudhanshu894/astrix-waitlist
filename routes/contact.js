@@ -79,17 +79,17 @@ router.post('/', async (req, res) => {
         <hr style="margin-bottom: 10px"/>
 
         <p style="text-align: center;">
-          <img src="${`https://astrix-frontend-sand.vercel.app/assets/imgs/Logo.png`}" style="width: 100px; display: block; margin: 0 auto;"/>
+          <img src="${`https://astrix-frontend-sand.vercel.app/assets/imgs/Logo.png`}" style="width: 60px; border-radius: 50%; display: block; margin: 0 auto;"/>
         </p>
 
-        <p style="text-align: center; margin: 15px 0;">
-          <a href="https://www.instagram.com/astrix.live" style="width: 80px; margin-right: 1rem;"><img src="https://cdn4.iconfinder.com/data/icons/social-media-black-white-2/600/Instagram_glyph_svg-512.png" alt="Instagram"></a>
-          <a href="https://www.linkedin.com/company/astrix-live" style="width: 80px; margin-right: 1rem;"><img src="https://w7.pngwing.com/pngs/324/687/png-transparent-computer-icons-linkedin-social-media-about-me-blog-social-media-text-logo-social-media.png" alt="Linkedln"></a>
-          <a href="https://twitter.com/astrix_live" style="width: 80px; margin-right: 1rem;"><img src="https://cdn3.iconfinder.com/data/icons/social-media-black-white-2/512/BW_Twitter_glyph_svg-512.png" alt="Twitter"></a>
-          <a href="https://www.youtube.com/channel/UC7w9TbzFJFprBqFrTohr_Lg" style="width: 80px;"><img src="https://www.kindpng.com/picc/m/33-338642_youtube-dark-circle-youtube-button-black-and-white.png" alt="YouTube></a>
+        <p style="text-align: center;">
+          <a href="https://www.instagram.com/astrix.live" style="margin-right: 1rem;"><img style="width: 50px;" src="https://cdn4.iconfinder.com/data/icons/social-media-black-white-2/600/Instagram_glyph_svg-512.png" alt="Instagram"></a>
+          <a href="https://www.linkedin.com/company/astrix-live" style="margin-right: 1rem;"><img style="width: 50px;" src="https://w7.pngwing.com/pngs/324/687/png-transparent-computer-icons-linkedin-social-media-about-me-blog-social-media-text-logo-social-media.png" alt="Linkedln"></a>
+          <a href="https://twitter.com/astrix_live" style="margin-right: 1rem;"><img style="width: 50px;" src="https://cdn3.iconfinder.com/data/icons/social-media-black-white-2/512/BW_Twitter_glyph_svg-512.png" alt="Twitter"></a>
+          <a href="https://www.youtube.com/channel/UC7w9TbzFJFprBqFrTohr_Lg"><img style="width: 50px;" src="https://www.kindpng.com/picc/m/33-338642_youtube-dark-circle-youtube-button-black-and-white.png" alt="YouTube></a>
         </p>
 
-        <p>You are subscribed to our mailing list. If you decide that you no longer want to receive emails from us, feel free to click the link below.</p>
+        <p style="text-align: center;">You are subscribed to our mailing list. If you decide that you no longer want to receive emails from us, feel free to click the link below.</p>
 
         <p style="text-align: center;"><a href="https://astrix-join-waitlist.onrender.com/contacts/unsubscribe/${newContact?._id}"><u>Unsubscribe</u></p>
 
