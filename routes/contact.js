@@ -27,6 +27,11 @@ router.post('/', async (req, res) => {
         .status(400)
         .send({ success: false, message: 'Missing parameters' });
     }
+
+    let contact = await Contact.findOne({email: email});
+    if (contact){
+      return res.status(400).json({error: "Contact already exists with given email"});
+    }
     const newContact = new Contact({
       name,
       email,
@@ -38,8 +43,43 @@ router.post('/', async (req, res) => {
     const mailOptions = {
       from: 'hello@astrix.live',
       to: email,
-      subject: 'Welcome to Astrix',
-      text: `Hello ${name},\n\nThank you for contacting us! Your information has been successfully added.`,
+      subject: 'Thank you for joining the Astrix Waitlist',
+      text: `<!DOCTYPE html>
+      <html lang="en">
+      
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Astrix Waitlist</title>
+      </head>
+      
+      <body style="font-family: Arial, sans-serif;">
+      
+        <p>Thank you for your interest in Astrix. We're thrilled to have you on board and appreciate your enthusiasm for making events seamless and more engaging.</p>
+      
+        <p>By joining our waitlist, you've taken the first step in being a part of a revolution in event ticketing. Astrix is committed to redefining the live event experience, and we can't wait to share our innovative features and exciting updates with you.</p>
+      
+        <p>Stay tuned for the latest news, announcements, and exclusive sneak peeks into the world of Astrix. We're working diligently behind the scenes to bring you a ticketing platform that will transform the way you experience live events.</p>
+      
+        <p>As a valued member of our waitlist, you'll be among the first to:</p>
+      
+        <ol>
+          <li>Receive updates on our official launch date.</li>
+          <li>Gain access to exclusive pre-launch offers and promotions.</li>
+          <li>You will be the first to explore Astrix's cutting-edge features and benefits.</li>
+        </ol>
+      
+        <p>In the meantime, don't hesitate to reach out if you have any questions or feedback. Your input is invaluable as we continue to refine and enhance Astrix to meet your needs and expectations.</p>
+      
+        <p>Thank you once again for your interest and support. We can't wait to embark on this exciting journey together.</p>
+      
+        <p>Stay tuned for the future of event ticketing with Astrix!</p>
+      
+        <p>- Astrix Team</p>
+      
+      </body>
+      
+      </html>`,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
