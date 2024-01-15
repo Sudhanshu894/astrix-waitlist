@@ -43,7 +43,7 @@ router.post('/', async (req, res) => {
     const mailOptions = {
       from: 'hello@astrix.live',
       to: email,
-      subject: 'Thank you for joining the Astrix Waitlist',
+      subject: 'Thank you for joining the Astrix Waitlist 🙌',
       html: `<!DOCTYPE html>
       <html lang="en">
       
@@ -75,7 +75,7 @@ router.post('/', async (req, res) => {
       
         <p>Stay tuned for the future of event ticketing with Astrix!</p>
       
-        <p>- Astrix Team</p>
+        <p style={{font-weight: "bold"}}>- Astrix Team</p>
       
       </body>
       
