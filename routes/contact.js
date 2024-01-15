@@ -36,6 +36,7 @@ router.post('/', async (req, res) => {
       name,
       email,
       message,
+      subscribe: true,
     });
 
     await newContact.save();
@@ -66,7 +67,7 @@ router.post('/', async (req, res) => {
         <ol>
           <li>Receive updates on our official launch date.</li>
           <li>Gain access to exclusive pre-launch offers and promotions.</li>
-          <li>You will be the first to explore Astrix's cutting-edge features and benefits.</li>
+          <li><strong> You will be the first to </strong> explore Astrix's cutting-edge features and benefits.</li>
         </ol>
       
         <p>In the meantime, don't hesitate to reach out if you have any questions or feedback. Your input is invaluable as we continue to refine and enhance Astrix to meet your needs and expectations.</p>
@@ -74,9 +75,27 @@ router.post('/', async (req, res) => {
         <p>Thank you once again for your interest and support. We can't wait to embark on this exciting journey together.</p>
       
         <p>Stay tuned for the future of event ticketing with Astrix!</p>
-      
-        <p>- Astrix Team</p>
-      
+
+        <hr style="margin-bottom: 10px"/>
+
+        <p style="text-align: center;">
+          <img src="${`https://astrix-frontend-sand.vercel.app/assets/imgs/Logo.png`}" style="width: 100px; display: block; margin: 0 auto;"/>
+        </p>
+
+        <p style="text-align: center; margin: 15px 0;">
+          <a href="https://www.instagram.com/astrix.live" style="width: 80px; margin-right: 1rem;"><img src="https://cdn4.iconfinder.com/data/icons/social-media-black-white-2/600/Instagram_glyph_svg-512.png" alt="Instagram"></a>
+          <a href="https://www.linkedin.com/company/astrix-live" style="width: 80px; margin-right: 1rem;"><img src="https://w7.pngwing.com/pngs/324/687/png-transparent-computer-icons-linkedin-social-media-about-me-blog-social-media-text-logo-social-media.png" alt="Linkedln"></a>
+          <a href="https://twitter.com/astrix_live" style="width: 80px; margin-right: 1rem;"><img src="https://cdn3.iconfinder.com/data/icons/social-media-black-white-2/512/BW_Twitter_glyph_svg-512.png" alt="Twitter"></a>
+          <a href="https://www.youtube.com/channel/UC7w9TbzFJFprBqFrTohr_Lg" style="width: 80px;"><img src="https://www.kindpng.com/picc/m/33-338642_youtube-dark-circle-youtube-button-black-and-white.png" alt="YouTube></a>
+        </p>
+
+        <p>You are subscribed to our mailing list. If you decide that you no longer want to receive emails from us, feel free to click the link below.</p>
+
+        <p style="text-align: center;"><a href="https://astrix-join-waitlist.onrender.com/contacts/unsubscribe/${newContact?._id}"><u>Unsubscribe</u></p>
+
+        <hr style="margin: 0 10px"/>
+
+        <p><b>- Astrix Team </b></p>
       </body>
       
       </html>`,
@@ -102,6 +121,20 @@ router.get('/', async (req, res) => {
   try {
     const contacts = await Contact.find();
     res.json(contacts);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+router.get('/unsubscribe/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const UpdateContact = await Contact.findOneAndUpdate({_id: id}, {subscribe: false}, {new: true});
+    if (!UpdateContact) {
+      return res.status(404).json({ error: 'Contact not found' });
+    }
+    res.json(UpdateContact);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });

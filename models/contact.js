@@ -16,6 +16,11 @@ const contactSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
+  subscribe: {
+    type: Boolean,
+    default: true,
+    required: true,
+  }
 });
 
 const Contact = mongoose.model('Contact', contactSchema);
