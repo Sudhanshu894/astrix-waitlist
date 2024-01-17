@@ -109,7 +109,7 @@ router.post('/', async (req, res) => {
       }
     });
 
-    res.status(201).json(newContact);
+    return res.status(201).json(newContact);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
