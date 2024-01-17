@@ -4,7 +4,7 @@ const contactSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
+    unique:true,
     trim: true,
   },
   name: {
@@ -20,7 +20,7 @@ const contactSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
     required: true,
-  }
+  },
 });
 
 const Contact = mongoose.model('Contact', contactSchema);

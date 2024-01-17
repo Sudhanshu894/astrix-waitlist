@@ -4,17 +4,17 @@ const Contact = require('../models/contact');
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp.office365.com',                  // hostname
-  service: 'outlook',                          // service name
+  host: 'smtp.office365.com', // hostname
+  service: 'outlook', // service name
   secureConnection: false,
   tls: {
-      ciphers: 'SSLv3'                         // tls version
+    ciphers: 'SSLv3', // tls version
   },
-  port: 587 || 465 || 5 || 2,                  // port
+  port: 587 || 465 || 5 || 2, // port
   auth: {
     user: process.env.USER_MAIL,
-    pass: process.env.USER_PASS
-  }
+    pass: process.env.USER_PASS,
+  },
 });
 
 // Create a contact
@@ -81,19 +81,21 @@ router.post('/', async (req, res) => {
         <p style="text-align: center;">
           <img src="${`https://astrix-frontend-sand.vercel.app/assets/imgs/Logo.png`}" style="width: 40px; border: 2px solid black; border-radius: 50%; display: block; margin: 0 auto;"/>
         </p>
-
-        <p style="text-align: center; display: flex; flex-direction: row; justify-content: center; align-items: center;">
-          <a href="https://www.instagram.com/astrix.live" style="margin-right: 1rem;"><img style="width: 50px;" src="https://cdn4.iconfinder.com/data/icons/social-media-black-white-2/600/Instagram_glyph_svg-512.png" alt="Instagram"></a>
-          <a href="https://www.linkedin.com/company/astrix-live" style="margin-right: 1rem;"><img style="width: 50px;" src="https://w7.pngwing.com/pngs/324/687/png-transparent-computer-icons-linkedin-social-media-about-me-blog-social-media-text-logo-social-media.png" alt="Linkedln"></a>
-          <a href="https://twitter.com/astrix_live" style="margin-right: 1rem;"><img style="width: 50px;" src="https://cdn3.iconfinder.com/data/icons/social-media-black-white-2/512/BW_Twitter_glyph_svg-512.png" alt="Twitter"></a>
-          <a href="https://www.youtube.com/channel/UC7w9TbzFJFprBqFrTohr_Lg"><img style="width: 50px;" src="https://www.kindpng.com/picc/m/33-338642_youtube-dark-circle-youtube-button-black-and-white.png" alt="YouTube></a>
+        
+        <p style="text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <a href="https://www.instagram.com/astrix.live" style="margin-bottom: 1rem;"><img style="width: 50px; padding-left: 359px;" src="https://cdn4.iconfinder.com/data/icons/social-media-black-white-2/600/Instagram_glyph_svg-512.png" alt="Instagram"></a>
+          <a href="https://www.linkedin.com/company/astrix-live" style="margin-bottom: 1rem;"><img style="width: 50px;" src="https://w7.pngwing.com/pngs/324/687/png-transparent-computer-icons-linkedin-social-media-about-me-blog-social-media-text-logo-social-media.png" alt="Linkedln"></a>
+          <a href="https://twitter.com/astrix_live" style="margin-bottom: 1rem;"><img style="width: 50px;" src="https://cdn3.iconfinder.com/data/icons/social-media-black-white-2/512/BW_Twitter_glyph_svg-512.png" alt="Twitter"></a>
+          <a href="https://www.youtube.com/channel/UC7w9TbzFJFprBqFrTohr_Lg"><img style="width: 50px;" src="https://www.kindpng.com/picc/m/33-338642_youtube-dark-circle-youtube-button-black-and-white.png" alt="YouTube"></a>
         </p>
 
         <br>
+        
+        <p style="text-align: center; margin-bottom: 1rem;">You are subscribed to our mailing list. If you decide that you no longer want to receive emails from us, feel free to click the link below.</p>
+        <p style="text-align: center; margin-bottom: 1rem;"><a href="https://astrix-join-waitlist.onrender.com/contacts/unsubscribe/${
+                newContact?._id
+              }"><u>Unsubscribe</u></a></p>
 
-        <p style="text-align: center;">You are subscribed to our mailing list. If you decide that you no longer want to receive emails from us, feel free to click the link below.</p>
-
-        <p style="text-align: center;"><a href="https://astrix-join-waitlist.onrender.com/contacts/unsubscribe/${newContact?._id}"><u>Unsubscribe</u></p>
 
         <hr style="margin: 0 10px"/>
 
@@ -132,7 +134,11 @@ router.get('/', async (req, res) => {
 router.get('/unsubscribe/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const UpdateContact = await Contact.findOneAndUpdate({_id: id}, {subscribe: false}, {new: true});
+    const UpdateContact = await Contact.findOneAndUpdate(
+      { _id: id },
+      { subscribe: false },
+      { new: true }
+    );
     if (!UpdateContact) {
       return res.status(404).json({ error: 'Contact not found' });
     }
@@ -151,11 +157,9 @@ router.put('/:email', async (req, res) => {
     // Validate email and username
     // Add your validation logic here
 
-    const updatedContact = await Contact.findOneAndUpdate(
-      { email },
-      req.body,
-      { new: true }
-    );
+    const updatedContact = await Contact.findOneAndUpdate({ email }, req.body, {
+      new: true,
+    });
 
     if (!updatedContact) {
       return res.status(404).json({ error: 'Contact not found' });
