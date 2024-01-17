@@ -77,10 +77,6 @@ router.post('/', async (req, res) => {
         <p>Stay tuned for the future of event ticketing with Astrix!</p>
 
         <hr style="margin-bottom: 10px"/>
-
-        <p style="text-align: center;">
-          <img src="${`https://astrix-frontend-sand.vercel.app/assets/imgs/ast-logo.png`}" style="width: 30px; border: 3px solid black; border-radius: 50%; display: block; margin: 0 auto;"/>
-        </p>
         
         <p style="margin: auto; display: flex; justify-content: center; gap: 15px; margin-top: 35px;">
           <a href="https://www.instagram.com/astrix.live" style="margin-bottom: 1rem;"><img style="width: 40px; padding-right: 10px;" src="https://cdn4.iconfinder.com/data/icons/social-media-black-white-2/600/Instagram_glyph_svg-512.png" alt="Instagram"></a>
