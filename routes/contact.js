@@ -89,6 +89,8 @@ router.post('/', async (req, res) => {
           <a href="https://www.youtube.com/channel/UC7w9TbzFJFprBqFrTohr_Lg"><img style="width: 50px;" src="https://www.kindpng.com/picc/m/33-338642_youtube-dark-circle-youtube-button-black-and-white.png" alt="YouTube></a>
         </p>
 
+        <br>
+
         <p style="text-align: center;">You are subscribed to our mailing list. If you decide that you no longer want to receive emails from us, feel free to click the link below.</p>
 
         <p style="text-align: center;"><a href="https://astrix-join-waitlist.onrender.com/contacts/unsubscribe/${newContact?._id}"><u>Unsubscribe</u></p>
