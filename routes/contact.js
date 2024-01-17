@@ -78,7 +78,7 @@ router.post('/', async (req, res) => {
 
         <hr style="margin-bottom: 10px"/>
         
-        <p style="margin: auto; display: flex; justify-content: center; gap: 15px; margin-top: 35px;">
+        <p style="margin: auto; width: 100%; text-align: center; margin-top: 35px;">
           <a href="https://www.instagram.com/astrix.live" style="margin-bottom: 1rem;"><img style="width: 40px; padding-right: 10px; padding-left: 50%;" src="https://cdn4.iconfinder.com/data/icons/social-media-black-white-2/600/Instagram_glyph_svg-512.png" alt="Instagram"></a>
           <a href="https://www.linkedin.com/company/astrix-live" style="margin-bottom: 1rem;"><img style="width: 40px; padding-right: 10px;" src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="Linkedln"></a>
           <a href="https://twitter.com/astrix_live" style="margin-bottom: 1rem;"><img style="width: 40px; padding-right: 10px;" src="https://cdn3.iconfinder.com/data/icons/social-media-black-white-2/512/BW_Twitter_glyph_svg-512.png" alt="Twitter"></a>
