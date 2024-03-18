@@ -21,6 +21,8 @@ const contactSchema = new mongoose.Schema({
     default: true,
     required: true,
   },
+},{
+  timestamps: true
 });
 
 const Contact = mongoose.model('Contact', contactSchema);
